@@ -1,0 +1,46 @@
+{% extends 'your_app/base.html' %}
+{% load static %}
+
+{% block title %}Certificates - Kaustubh{% endblock %}
+
+{% block content %}
+<main style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 2rem;">
+
+    <h1 style="font-size: 3rem; color: #A3E635; margin-bottom: 1rem;">My Certificates</h1>
+
+    <p style="margin-bottom: 2rem; font-size: 1.2rem;">
+        Explore some of the certifications I have earned over the years.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px;">
+        <!-- Certificate 1 -->
+        <div style="background-color: #1a1a1a; border-radius: 0.5rem; overflow: hidden; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <img src="{% static 'certificates/certificate1.jpg' %}" alt="Certificate 1" style="width: 100%; height: auto;">
+            <div style="padding: 1rem;">
+                <h2 style="color: #A3E635;">UI/UX Design Certification</h2>
+                <p style="font-size: 0.9rem; color: #ccc;">Completed an intensive course on user experience and user interface design from XYZ Academy.</p>
+            </div>
+        </div>
+
+        <!-- Certificate 2 -->
+        <div style="background-color: #1a1a1a; border-radius: 0.5rem; overflow: hidden; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <img src="{% static 'certificates/certificate2.jpg' %}" alt="Certificate 2" style="width: 100%; height: auto;">
+            <div style="padding: 1rem;">
+                <h2 style="color: #A3E635;">Graphic Design Masterclass</h2>
+                <p style="font-size: 0.9rem; color: #ccc;">Mastered graphic design principles and tools like Adobe Photoshop and Illustrator.</p>
+            </div>
+        </div>
+
+        <!-- Certificate 3 -->
+        <div style="background-color: #1a1a1a; border-radius: 0.5rem; overflow: hidden; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <img src="{% static 'certificates/certificate3.jpg' %}" alt="Certificate 3" style="width: 100%; height: auto;">
+            <div style="padding: 1rem;">
+                <h2 style="color: #A3E635;">Advanced Web Development</h2>
+                <p style="font-size: 0.9rem; color: #ccc;">Advanced training on modern web development technologies including HTML, CSS, and JavaScript.</p>
+            </div>
+        </div>
+
+        <!-- Add more certificates as needed -->
+    </div>
+</main>
+{% endblock %}

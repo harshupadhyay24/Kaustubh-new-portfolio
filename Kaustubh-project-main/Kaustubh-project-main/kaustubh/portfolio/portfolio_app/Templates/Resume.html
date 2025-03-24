@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume - Haris F. Watson</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 100px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .logo-icon {
+      width: 25px;
+      height: 25px;
+      background-color: #ef4444;
+      margin-right: 10px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin: 0 15px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-consult {
+      background-color: #ef4444;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .resume-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 50px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #1e293b;
+      border-bottom: 2px solid #ef4444;
+      display: inline-block;
+    }
+
+    .resume-section {
+      margin-bottom: 60px;
+    }
+
+    .resume-item {
+      margin-bottom: 30px;
+    }
+
+    .resume-item h3 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1e293b;
+    }
+
+    .resume-item h4 {
+      font-size: 16px;
+      font-weight: normal;
+      color: #64748b;
+      margin-top: 5px;
+    }
+
+    .resume-item p {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill-item {
+      background-color: #ffffff;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background-color: #ef4444;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon"></div>
+      PORTFOLIO
+    </div>
+    <nav>
+      <ul>
+        <a href="{% url 'home'%}"><li>Home</li></a>
+        <li>Resume</li>
+        <li>Certificates</li>
+        <li>Project</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+    <button class="btn-consult">Get Free Consulent</button>
+  </header>
+
+  <!-- Resume Content -->
+  <div class="resume-container">
+
+    <!-- Experience Section -->
+    <div class="resume-section">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="resume-item">
+        <h3>Senior UI/UX Designer</h3>
+        <h4>Creative Agency - 2020 to Present</h4>
+        <p>
+          Designing user-friendly web and mobile interfaces, collaborating with developers, and leading design workshops for international clients.
+        </p>
+      </div>
+
+      <div class="resume-item">
+        <h3>Graphic Designer</h3>
+        <h4>Design Studio - 2017 to 2020</h4>
+        <p>
+          Worked on branding, illustrations, and digital marketing materials, boosting client engagement by 30%.
+        </p>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="resume-section">
+      <h2 class="section-title">Education</h2>
+
+      <div class="resume-item">
+        <h3>Bachelor of Design</h3>
+        <h4>University of Design - 2013 to 2017</h4>
+        <p>
+          Specialized in User Interface Design and Visual Communication. Graduated with honors.
+        </p>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="resume-section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-list">
+        <div class="skill-item">UI/UX Design</div>
+        <div class="skill-item">Adobe XD</div>
+        <div class="skill-item">Figma</div>
+        <div class="skill-item">Sketch</div>
+        <div class="skill-item">HTML & CSS</div>
+        <div class="skill-item">JavaScript</div>
+        <div class="skill-item">Branding</div>
+        <div class="skill-item">Illustration</div>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="resume-section">
+      <h2 class="section-title">Certifications</h2>
+
+      <div class="resume-item">
+        <h3>Certified UX Designer</h3>
+        <h4>UX Design Institute - 2021</h4>
+      </div>
+
+      <div class="resume-item">
+        <h3>Adobe Certified Expert (ACE)</h3>
+        <h4>Adobe - 2020</h4>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Haris F. Watson. All rights reserved.
+  </footer>
+
+</body>
+</html>
