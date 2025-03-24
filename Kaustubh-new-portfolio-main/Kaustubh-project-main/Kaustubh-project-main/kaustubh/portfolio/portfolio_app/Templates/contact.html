@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f1f5f9; color: #1e293b; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 100px; background-color: #fff; }
+    .logo { font-weight: bold; font-size: 20px; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin: 0 15px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+    .container { display: flex; justify-content: center; align-items: center; height: 80vh; }
+    .contact-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 400px; text-align: center; }
+    .contact-box h1 { font-size: 24px; margin-bottom: 15px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    .contact-form textarea { height: 100px; resize: none; }
+    .btn-submit { background-color: #007bff; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 5px; width: 100%; }
+
+    /* Popup Styling */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .popup button {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PORTFOLIO</div>
+    <nav>
+      <ul>
+        <a href="{% url 'home'%}"><li>Home</li></a>
+        <a href="{% url 'resume'%}"><li>Resume</li></a>
+        <a href="{% url 'certificates'%}"><li>Certificates</li></a>
+        <li>Project</li>
+        <a href="{% url 'contact' %}"><li>Contact</li></a>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="contact-box">
+      <h1>Contact Us</h1>
+      <form method="POST" class="contact-form" onsubmit="showPopup(event)">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup Message -->
+  <div class="popup" id="popup">
+    <p>Message submitted successfully!</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>For direct inquiries, contact us at: <strong>kaustubhupadhyay24@gmail.com</strong></p>
+  </footer>
+
+  <script>
+    function showPopup(event) {
+      event.preventDefault(); // Prevent form from actually submitting
+      document.getElementById("popup").style.display = "block";
+      setTimeout(() => {
+        document.querySelector(".contact-form").submit(); // Submit after showing popup
+      }, 1500);
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

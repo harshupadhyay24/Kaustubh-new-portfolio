@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f1f5f9; color: #1e293b; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 100px; background-color: #fff; }
+    .logo { font-weight: bold; font-size: 20px; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin: 0 15px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+    .container { display: flex; justify-content: center; align-items: flex-start; padding: 50px; gap: 30px; }
+
+    .certificate-section { flex: 2; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .certificate-list { list-style: none; padding: 0; }
+    .certificate-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #e2e8f0; }
+    .btn-delete { background-color: red; color: white; padding: 5px 10px; border: none; cursor: pointer; border-radius: 4px; }
+
+    .upload-section { flex: 1; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center; }
+    .upload-section h2 { font-size: 18px; margin-bottom: 10px; }
+    .upload-form { display: flex; flex-direction: column; align-items: center; }
+    .upload-form input { width: 100%; padding: 8px; margin-bottom: 8px; }
+    .btn-upload { background-color: green; color: white; padding: 8px 15px; border: none; cursor: pointer; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PORTFOLIO</div>
+    <nav>
+      <ul>
+        <a href="{% url 'home'%}"><li>Home</li></a>
+        <a href="{% url 'resume'%}"><li>Resume</li></a>
+        <a href="{% url 'certificates'%}"><li>Certificates</li></a>
+        <li>Project</li>
+        <a href="{% url 'contact' %}"><li>Contact</li></a>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Certificates List (Bigger Section) -->
+    <section class="certificate-section">
+      <h1>My Certificates</h1>
+      {% if certificates %}
+        <ul class="certificate-list">
+          {% for certificate in certificates %}
+            <li class="certificate-item">
+              <span>
+                <strong>{{ certificate.title }}</strong> - {{ certificate.issued_by }} ({{ certificate.issue_date }})
+              </span>
+              <span>
+                <a href="{{ certificate.certificate_file.url }}" target="_blank">View</a>
+                <form action="{% url 'delete_certificate' certificate.id %}" method="POST" style="display:inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-delete">Delete</button>
+                </form>
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No certificates available.</p>
+      {% endif %}
+    </section>
+
+    <!-- Upload Form (Smaller Section) -->
+    <section class="upload-section">
+      <h2>Upload Certificate</h2>
+      <form method="POST" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="issued_by" placeholder="Issued By" required>
+        <input type="date" name="issue_date" required>
+        <input type="file" name="certificate_file" accept="application/pdf,image/*" required>
+        <button type="submit" class="btn-upload">Upload</button>
+      </form>
+    </section>
+  </div>
+
+</body>
+</html>
